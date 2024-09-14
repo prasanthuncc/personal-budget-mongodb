@@ -1,3 +1,7 @@
+// To read files from the resources
+const fs = require('fs');
+const path = require('path');
+
 const express = require('express')
 const app = express();
 const port = 3000;
@@ -10,18 +14,10 @@ app.get('/budget', (req, res) => {
 })
 
 app.use('/', express.static('public'));
+// Read the JSON file
+const filePath = path.join(__dirname, 'resources', 'budget.json');
+const budget = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-const budget = {
-    'myBudget': [
-
-        {
-            title: 'Eat out', budget: 30
-        }, {
-            title: 'Rent', budget: 350
-        }, {
-            title: 'Grocery', budget: 90
-        }]
-}
 app.listen(port, () => {
     console.log(`Example app listening to the port http://localhost:${port}`)
 })
