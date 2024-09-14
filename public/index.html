@@ -3,117 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--    Modified title tag as a SEO change-->
-    <title>Personal Budget| Budget Manager</title>
-    <meta name="description" content="A free personal budger app">
-    <meta name="keywords" content="app free budget finance">
-    <!--    Added author meta tag as a SEO change-->
-    <meta name="author" content="prasanth">
-    <!--   Added meta tag for declaring the language for SEO change-->
-    <meta http-equiv="Content-Language" content="en">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="main.css">
+    <title>Personal Budget</title>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-<!--    Added aria-label for A11y change-->
-<a href="#main" class="skip" aria-label="skip to main content">Skip to content</a>
-<!--    Added header tag for semantic html change-->
-<header>
-    <!--    Added role and aria-label attributes for A11y change-->
-    <nav class="menu" role="navigation" aria-label="Main navigation">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
-        </ul>
-    </nav>
 
-    <div class="hero">
-        <h1>Personal Budget</h1>
-        <h2>A personal-budget management app</h2>
-    </div>
-</header>
+<div class="menu">
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="https://google.com">Google</a></li>
+    </ul>
+</div>
 
-<main class="center" id="main">
+<div class="hero">
+    <h1>Personal Budget</h1>
+    <h2>A personal-budget management app</h2>
+</div>
 
-    <!--    Changed div to section as a semantic html change-->
-    <section class="page-area">
+<div class="container center">
 
-        <article>
+    <div class="page-area">
+
+        <div class="text-box">
             <h1>Stay on track</h1>
             <p>
                 Do you know where you are spending your money? If you really stop to track it down,
                 you would get surprised! Proper budget management depends on real data... and this
                 app will help you with that!
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Alerts</h1>
             <p>
                 What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Results</h1>
             <p>
                 People who stick to a financial plan, budgeting every expense, get out of debt faster!
                 Also, they to live happier lives... since they expend without guilt or fear...
                 because they know it is all good and accounted for.
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Free</h1>
             <p>
                 This app is free!!! And you are the only one holding your data!
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Stay on track</h1>
             <p>
                 Do you know where you are spending your money? If you really stop to track it down,
                 you would get surprised! Proper budget management depends on real data... and this
                 app will help you with that!
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Alerts</h1>
             <p>
                 What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
             <h1>Results</h1>
             <p>
                 People who stick to a financial plan, budgeting every expense, get out of debt faster!
                 Also, they to live happier lives... since they expend without guilt or fear...
                 because they know it is all good and accounted for.
             </p>
-        </article>
+        </div>
 
-        <article>
+        <div class="text-box">
+            <h1>Free</h1>
+            <p>
+                This app is free!!! And you are the only one holding your data!
+            </p>
+        </div>
+
+        <div class="text-box">
             <h1>Chart</h1>
             <p>
-                <!--    Added role attribute for A11y change-->
-                <canvas id="myChart" width="400" height="400" role="img"></canvas>
+                <canvas id="myChart" width="600" height="400"></canvas>
             </p>
-        </article>
+        </div>
 
-    </section>
+    </div>
 
-</main>
+</div>
 
-<!-- Removed redundant div inside footer for semantic change-->
-<footer class="bottom center">
-    All rights reserved &copy; Prasanth
-</footer>
-
+<div class="bottom">
+    <div class="center">
+        All rights reserved &copy; Fabio Nolasco
+    </div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
         integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
         crossorigin="anonymous"></script>
@@ -125,7 +118,7 @@
     var dataSource = {
         datasets: [
             {
-                data: [],
+                data: [10, 20, 30],
                 backgroundColor: [
                     '#ffcd56',
                     '#ff6384',
@@ -134,8 +127,9 @@
                 ]
             }
         ],
-        labels: []
+        labels: ['Eat out', 'Rent', 'Grocery']
     };
+
 
     function createChart() {
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -158,6 +152,5 @@
 
     getBudget();
 </script>
-
 </body>
 </html>

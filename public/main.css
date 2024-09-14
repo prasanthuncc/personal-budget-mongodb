@@ -4,25 +4,25 @@
 
 body {
     font-size: 10px;
-    font-family: Tahoma, Arial;
+    font-family: Tahoma, Arial, serif;
 }
 
-.menu {
+div.menu {
     width: 100%;
     background-color: #4d5791;
     height: 44px;
     padding: 0 40px;
 }
 
-.menu ul,
-.menu ul li {
+div.menu ul,
+div.menu ul li {
     margin: 0;
-    padding: 0;
+    padding: 0 ;
     list-style: none;
     display: inline-block;
 }
 
-.menu ul li a {
+div.menu ul li a {
     display: block;
     padding: 0 20px;
     line-height: 44px;
@@ -32,12 +32,12 @@ body {
     margin: 0;
 }
 
-.menu ul li a:hover {
+div.menu ul li a:hover  {
     background-color: white;
     color: #4d5791;
 }
 
-.hero {
+div.hero {
     height: 350px;
     background-color: #b4c6f0;
     background-image: url('/bg.png');
@@ -47,13 +47,13 @@ body {
     padding-top: 40px;
 }
 
-.hero h1,
-.hero h2 {
+div.hero h1,
+div.hero h2 {
     text-align: center;
     margin: 0;
 }
 
-.hero h1 {
+div.hero h1 {
     color: #fff;
     font-size: 4.2em;
     margin-bottom: 20px;
@@ -83,7 +83,7 @@ div.hero h2 {
     text-align: center;
 }
 
-main article {
+.container div.text-box {
     display: inline-block;
     width: 100%;
     max-width: 340px;
@@ -92,7 +92,7 @@ main article {
 }
 
 @media screen and (min-width: 768px) {
-    .center section.page-area {
+    .container .div.text-box {
         margin: 10px;
     }
 }
