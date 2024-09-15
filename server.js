@@ -15,7 +15,7 @@ app.get('/budget', (req, res) => {
 
 app.use('/', express.static('public'));
 // Read the JSON file
-const filePath = path.join(__dirname, 'resources', 'budget.json');
+const filePath = path.join(__dirname, './', 'budget.json');
 const budget = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 app.listen(port, () => {
