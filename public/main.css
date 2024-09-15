@@ -7,6 +7,22 @@ body {
     font-family: Tahoma, Arial, serif;
 }
 
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+path.slice {
+    stroke-width: 2px;
+}
+
+polyline {
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
 .menu {
     width: 100%;
     background-color: #4d5791;
@@ -83,13 +99,24 @@ div.hero h2 {
     text-align: center;
 }
 
-main article {
-    display: inline-block;
-    width: 100%;
-    max-width: 340px;
-    text-align: justify;
-    margin: 20px;
+/*main article {*/
+/*    display: inline-block;*/
+/*    width: 100%;*/
+/*    max-width: 340px;*/
+/*    text-align: justify;*/
+/*    margin: 20px;*/
+/*}*/
+
+.grid-container{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
 }
+
+.grid-item{
+    padding: 10px;
+}
+
 
 @media screen and (min-width: 768px) {
     .center section.page-area {
