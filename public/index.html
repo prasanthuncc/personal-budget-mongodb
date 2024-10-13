@@ -39,78 +39,78 @@
 
     <!--    Changed div to section as a semantic html change-->
     <section class="page-area">
-    <div class="grid-container">
-        <article class="grid-item">
-            <h1>Stay on track</h1>
-            <p>
-                Do you know where you are spending your money? If you really stop to track it down,
-                you would get surprised! Proper budget management depends on real data... and this
-                app will help you with that!
-            </p>
-        </article>
+        <div class="grid-container">
+            <article class="grid-item">
+                <h1>Stay on track</h1>
+                <p>
+                    Do you know where you are spending your money? If you really stop to track it down,
+                    you would get surprised! Proper budget management depends on real data... and this
+                    app will help you with that!
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Alerts</h1>
-            <p>
-                What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
-            </p>
-        </article>
+            <article class="grid-item">
+                <h1>Alerts</h1>
+                <p>
+                    What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Results</h1>
-            <p>
-                People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                Also, they to live happier lives... since they expend without guilt or fear...
-                because they know it is all good and accounted for.
-            </p>
-        </article>
+            <article class="grid-item">
+                <h1>Results</h1>
+                <p>
+                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
+                    Also, they to live happier lives... since they expend without guilt or fear...
+                    because they know it is all good and accounted for.
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Free</h1>
-            <p>
-                This app is free!!! And you are the only one holding your data!
-            </p>
-        </article>
+            <article class="grid-item">
+                <h1>Free</h1>
+                <p>
+                    This app is free!!! And you are the only one holding your data!
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Stay on track</h1>
-            <p>
-                Do you know where you are spending your money? If you really stop to track it down,
-                you would get surprised! Proper budget management depends on real data... and this
-                app will help you with that!
-            </p>
-        </article>
+            <article class="grid-item">
+                <h1>Stay on track</h1>
+                <p>
+                    Do you know where you are spending your money? If you really stop to track it down,
+                    you would get surprised! Proper budget management depends on real data... and this
+                    app will help you with that!
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Alerts</h1>
-            <p>
-                What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
-            </p>
-        </article>
+            <article class="grid-item">
+                <h1>Alerts</h1>
+                <p>
+                    What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
+                </p>
+            </article>
 
-        <article class="grid-item">
-            <h1>Results</h1>
-            <p>
-                People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                Also, they to live happier lives... since they expend without guilt or fear...
-                because they know it is all good and accounted for.
-            </p>
-        </article>
-        <article class="grid-item">
-            <h1>D3JS Chart</h1>
-            <div id="d3jsChart"></div>
-        </article>
+            <article class="grid-item">
+                <h1>Results</h1>
+                <p>
+                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
+                    Also, they to live happier lives... since they expend without guilt or fear...
+                    because they know it is all good and accounted for.
+                </p>
+            </article>
+            <article class="grid-item">
+                <h1>D3JS Chart</h1>
+                <div id="d3jsChart"></div>
+            </article>
 
-        <article class="grid-item" style="justify-self: left">
-            <h1>Chart</h1>
-            <canvas id="myChart" width="250px" height="250px" role="img"></canvas>
-<!--            <p>-->
-<!--                &lt;!&ndash;    Added role attribute for A11y change&ndash;&gt;-->
-<!--                <canvas id="myChart" width="250px" height="250px" role="img"></canvas>-->
-<!--            </p>-->
-        </article>
+            <article class="grid-item" style="justify-self: left">
+                <h1>Chart</h1>
+                <canvas id="myChart" width="250px" height="250px" role="img"></canvas>
+                <!--            <p>-->
+                <!--                &lt;!&ndash;    Added role attribute for A11y change&ndash;&gt;-->
+                <!--                <canvas id="myChart" width="250px" height="250px" role="img"></canvas>-->
+                <!--            </p>-->
+            </article>
 
-    </div>
+        </div>
 
 
     </section>
@@ -136,16 +136,7 @@
         datasets: [
             {
                 data: [],
-                backgroundColor: [
-                    '#ffcd56',
-                    '#ff6384',
-                    '#36a2eb',
-                    '#fd6b19',
-                    '#3bfd19',
-                    '#0937f1',
-                    '#545657',
-                    '#ff0000',
-                ]
+                backgroundColor: []
             }
         ],
         labels: []
@@ -163,15 +154,18 @@
     function getBudget() {
         axios.get('http://localhost:3000/budget')
             .then(function (res) {
-                for (var i = 0; i < res.data.myBudget.length; i++) {
-                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                    dataSource.labels[i] = res.data.myBudget[i].title;
+                for (var i = 0; i < res.data.length; i++) {
+                    dataSource.datasets[0].data[i] = res.data[i].relatedValue;
+                    dataSource.labels[i] = res.data[i].title;
+                    dataSource.datasets[0].backgroundColor[i] = res.data[i].color
                 }
                 createChart();
-                let budgetData = res.data.myBudget.map(function (item) {
+                let budgetData = res.data.map(function (item) {
                     return {
                         label: item.title,
-                        value: item.budget
+                        value: item.relatedValue,
+                        color: item.color
+
                     };
                 });
                 change(budgetData);
@@ -216,16 +210,17 @@
         return d.data.label;
     };
 
-    var color = d3.scale.ordinal()
-        .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
 
     function change(data) {
 
         /* ------- PIE SLICES -------*/
-        var slice = svg.select(".slices").selectAll("path.slice")
+        let slice = svg.select(".slices").selectAll("path.slice")
             .data(pie(data), key);
+
+        let colors = data.map(item => item.color);
+        let color = d3.scale.ordinal()
+            .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
+            .range(colors);
 
         slice.enter()
             .insert("path")
